@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+    Homepage - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Hello World!</h1>
+    <!--here's the variable I am passing in; Pluralize number:-->
+    <p>{% if number == 3 %}
+            <!--There are <b>{{number}}</b> dog{{ number|pluralize }}-->
+            <!--There are <b>{{number}}</b> walrus{{number|pluralize:"es"}}!-->
+            There are {{ number|apnumber }} dogs!
+        {% else %}
+            False
+        {% endif %}
+    </p>
+    <!--<p>This is my name: {{ thing|slugify }}</p>-->
+    <!--<p>This is my name: {{ thing|title }}</p>-->
+    <p>This is my name: {{thing|truncatewords:1 }}</p>
+
+{% endblock content %}
