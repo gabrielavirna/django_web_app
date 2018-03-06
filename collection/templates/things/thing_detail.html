@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}
-    Homepage - {{ block.super }}
+    {{thing.name}} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
+     <h1>Thing detail page{{title}}</h1>
     {% for thing in things %}
-        <h1><a href="{% url 'thing_detail' slug=thing.slug %}">{{ thing.name }}</a></h1>
+        <h2>{{ thing.name }}</h2>
         <p>{{ thing.description }}</p>
     {% endfor %}
 {% endblock content %}

@@ -12,16 +12,20 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+
+    r'^things/(?P<slug>[-\w]+)/$' -> matches any word and calls it 'slug'
 """
 from django.conf.urls import url
 from django.contrib import admin
-from collection import views
 from django.views.generic import TemplateView
+
+from collection import views
 
 urlpatterns = [
     url(r'^$', views.index, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    url(r'^things/(?P<slug>[-\w]+)/$', views.thing_detail, name='thing_detail'),
 ]
 
